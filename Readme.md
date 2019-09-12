@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Bodik Malomuzh](https://up.htmlacademy.ru/javascript/18/user/329099).
-* Наставник: `Неизвестно`.
+* Наставник: [Сергей Рубец](https://up.htmlacademy.ru/javascript/18/user/41580).
 
 ---
 
