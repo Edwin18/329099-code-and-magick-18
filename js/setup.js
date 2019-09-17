@@ -12,9 +12,9 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template').c
 var similarListElement = document.querySelector('.setup-similar-list');
 var fragment = document.createDocumentFragment();
 
-var getWizardSetup = function (names, surnames, coatColors, eyesColors) {
+var getWizardSetup = function (names, surnames, coatColors, eyesColors, wizardCount) {
   var wizardSetup = [];
-  for (var i = 0; i < WIZARD_COUNT; i++) {
+  for (var i = 0; i < wizardCount; i++) {
     var tempObject = {};
     tempObject.name = names[Math.round(Math.random() * (names.length - 1))] + ' ' + surnames[Math.round(Math.random() * (surnames.length - 1))];
     tempObject.coatColor = coatColors[Math.round(Math.random() * (coatColors.length - 1))];
@@ -37,7 +37,7 @@ var getWizardTemplate = function (wizard) {
 
 var renderWizard = function (names, surnames, coatColors, eyesColors, wizardCount) {
   for (var i = 0; i < wizardCount; i++) {
-    fragment.appendChild(getWizardTemplate(getWizardSetup(names, surnames, coatColors, eyesColors)[i]));
+    fragment.appendChild(getWizardTemplate(getWizardSetup(names, surnames, coatColors, eyesColors, wizardCount)[i]));
   }
 };
 
