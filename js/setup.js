@@ -18,6 +18,7 @@ var getRandomNumber = function (min, max) {
 
 var getWizardSetup = function (names, surnames, coatColors, eyesColors, wizardCount) {
   var wizardSetup = [];
+
   for (var i = 0; i < wizardCount; i++) {
     var tempObject = {};
     tempObject.name = names[getRandomNumber(0, names.length - 1)] + ' ' + surnames[getRandomNumber(0, surnames.length - 1)];
@@ -26,6 +27,7 @@ var getWizardSetup = function (names, surnames, coatColors, eyesColors, wizardCo
     wizardSetup.push(tempObject);
     tempObject = {};
   }
+
   return wizardSetup;
 };
 
@@ -41,9 +43,11 @@ var getWizardTemplate = function (wizard) {
 
 var renderWizards = function (names, surnames, coatColors, eyesColors, wizardCount) {
   var fragment = document.createDocumentFragment();
+
   for (var i = 0; i < wizardCount; i++) {
     fragment.appendChild(getWizardTemplate(getWizardSetup(names, surnames, coatColors, eyesColors, wizardCount)[i]));
   }
+
   similarListElement.appendChild(fragment);
 };
 
