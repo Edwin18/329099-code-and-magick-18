@@ -10,15 +10,19 @@ var userDialog = document.querySelector('.setup');
 var similarWizardSetup = document.querySelector('.setup-similar');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 var similarListElement = document.querySelector('.setup-similar-list');
-var fragment = document.createDocumentFragment();
+
+var getRandomNumber = function (min, max) {
+  var rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+};
 
 var getWizardSetup = function (names, surnames, coatColors, eyesColors, wizardCount) {
   var wizardSetup = [];
   for (var i = 0; i < wizardCount; i++) {
     var tempObject = {};
-    tempObject.name = names[Math.round(Math.random() * (names.length - 1))] + ' ' + surnames[Math.round(Math.random() * (surnames.length - 1))];
-    tempObject.coatColor = coatColors[Math.round(Math.random() * (coatColors.length - 1))];
-    tempObject.eyesColor = eyesColors[Math.round(Math.random() * (eyesColors.length - 1))];
+    tempObject.name = names[getRandomNumber(0, names.length - 1)] + ' ' + surnames[getRandomNumber(0, surnames.length - 1)];
+    tempObject.coatColor = coatColors[getRandomNumber(0, coatColors.length - 1)];
+    tempObject.eyesColor = eyesColors[getRandomNumber(0, eyesColors.length - 1)];
     wizardSetup.push(tempObject);
     tempObject = {};
   }
@@ -35,13 +39,14 @@ var getWizardTemplate = function (wizard) {
   return wizardElement;
 };
 
-var renderWizard = function (names, surnames, coatColors, eyesColors, wizardCount) {
+var renderWizards = function (names, surnames, coatColors, eyesColors, wizardCount) {
+  var fragment = document.createDocumentFragment();
   for (var i = 0; i < wizardCount; i++) {
     fragment.appendChild(getWizardTemplate(getWizardSetup(names, surnames, coatColors, eyesColors, wizardCount)[i]));
   }
+  similarListElement.appendChild(fragment);
 };
 
-renderWizard(NAMES, SURNAMES, COAT_COLORS, EYES_COLORS, WIZARD_COUNT);
-similarListElement.appendChild(fragment);
+renderWizards(NAMES, SURNAMES, COAT_COLORS, EYES_COLORS, WIZARD_COUNT);
 userDialog.classList.remove('hidden');
 similarWizardSetup.classList.remove('hidden');
