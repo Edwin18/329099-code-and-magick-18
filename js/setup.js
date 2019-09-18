@@ -16,6 +16,14 @@ var getRandomNumber = function (min, max) {
   return Math.round(rand);
 };
 
+var showElement = function (elem) {
+  elem.classList.remove('hidden');
+};
+
+// var hideElement = function (elem) {
+//   elem.classList.add('hidden');
+// };
+
 var getWizardSetup = function (names, surnames, coatColors, eyesColors, wizardCount) {
   var wizardSetup = [];
 
@@ -45,12 +53,14 @@ var renderWizards = function (names, surnames, coatColors, eyesColors, wizardCou
   var fragment = document.createDocumentFragment();
 
   for (var i = 0; i < wizardCount; i++) {
-    fragment.appendChild(getWizardTemplate(getWizardSetup(names, surnames, coatColors, eyesColors, wizardCount)[i]));
+    var setup = getWizardSetup(names, surnames, coatColors, eyesColors, wizardCount);
+    var template = getWizardTemplate(setup[i]);
+    fragment.appendChild(template);
   }
 
   similarListElement.appendChild(fragment);
 };
 
 renderWizards(NAMES, SURNAMES, COAT_COLORS, EYES_COLORS, WIZARD_COUNT);
-userDialog.classList.remove('hidden');
-similarWizardSetup.classList.remove('hidden');
+showElement(userDialog);
+showElement(similarWizardSetup);
