@@ -76,6 +76,7 @@ var setupInput = setup.querySelector('.setup-user-name');
 var wizardCoat = setup.querySelector('.setup-wizard .wizard-coat');
 var wizardEyes = setup.querySelector('.setup-wizard .wizard-eyes');
 var wizardFireball = setup.querySelector('.setup-fireball-wrap');
+var wizardFireballInput = wizardFireball.querySelector('input');
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -128,5 +129,5 @@ wizardEyes.addEventListener('click', function () {
 wizardFireball.addEventListener('click', function () {
   var randomColor = FIREBALL_COLORS[getRandomNumber(0, FIREBALL_COLORS.length - 1)];
   wizardFireball.style.backgroundColor = randomColor;
-  wizardFireball.querySelector('input').value = randomColor;
+  wizardFireballInput.value = randomColor;
 });
